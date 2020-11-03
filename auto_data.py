@@ -12,13 +12,10 @@ import glob
 
 print("start")
 
-#path = 'AjayKumar.docx'
+path = 'the_canterville_ghost.txt'
 text = ""
-files = [file for file in glob.glob(r"cv\*")]
-for file_name in files:
-    with io.open(file_name, encoding='cp437', errors='ignore', newline='') as image_file:
-        text = image_file.read().lower() + text
-print('corpus length:', len(text))
+text = open(path, encoding="utf8", errors='ignore').read().lower()
+#print('corpus length:', len(text))
 
 tokenizer = RegexpTokenizer(r'\w+')
 words = tokenizer.tokenize(text)
@@ -45,16 +42,38 @@ for i, each_words in enumerate(prev_words):
 
 
 #print(X[0][0])
+#print('yup')
+def prepare_input(text):
+    x = np.zeros((1, WORD_LENGTH, len(unique_words)))
+    for t, word in enumerate(text.split()):
+        print(word)
+        x[0, t, unique_word_index[word]] = 1
+    return x
+
+def sample(preds, top_n=3):
+    preds = np.asarray(preds).astype('float64')
+    preds = np.log(preds)
+    exp_preds = np.exp(preds)
+    preds = exp_preds / np.sum(exp_preds)
+    return heapq.nlargest(top_n, range(len(preds)), preds.take)
+
+#print(unique_words)
+#print(unique_word_index)
 
 
 from numpy import asarray
 from numpy import save
-data = asarray(X)
+#data = asarray(X)
 
-save('features.npy', data)
-print(" features done")
+#save('features.npy', data)
+#print("features done")
 
 
-data = asarray(Y)
-save('label.npy', data)
-print("label done")
+#data = asarray(Y)
+#save('label.npy', data)
+#print("label done")
+
+#data = asarray(unique_words)
+#save('unique_words.npy', data)
+#print("unique words done")
+
