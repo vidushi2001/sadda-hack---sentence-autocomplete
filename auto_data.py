@@ -12,7 +12,7 @@ import glob
 
 print("start")
 
-path = 'the_canterville_ghost.txt'
+path = 'one.txt'
 text = ""
 text = open(path, encoding="utf8", errors='ignore').read().lower()
 #print('corpus length:', len(text))
