@@ -14,7 +14,7 @@ print("start")
 
 #path = 'AjayKumar.docx'
 text = ""
-files = [file for file in glob.glob(r"C:\Users\SANJAY AGARWAL\Desktop\cv\*")]
+files = [file for file in glob.glob(r"cv\*")]
 for file_name in files:
     with io.open(file_name, encoding='cp437', errors='ignore', newline='') as image_file:
         text = image_file.read().lower() + text
