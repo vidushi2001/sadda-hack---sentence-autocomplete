@@ -6,6 +6,7 @@ This model is trained on datasets of resumes but it can be used in message autoc
 
 #Technologies Used:
 Keras,Tensorflow,Deep learning,pickle,heapq,glob,numpy,nltk,matplotlib
+
 Tokenize is used to split the continous text into seperate words.
 LTSM layer has been used as we are dealing with sequential data.
 
